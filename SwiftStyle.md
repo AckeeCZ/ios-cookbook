@@ -246,7 +246,7 @@ if user.isHappy {
 ```
 
 **Not Preferred:**
-\`\`\`swift
+```swift
 if user.isHappy
 {
 	// Do something
@@ -254,7 +254,7 @@ if user.isHappy
 else {
 	// Do something else
 }
-\`\`\`
+```
 
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
 
@@ -388,30 +388,30 @@ let closure = {
 
 **Preferred:**
 
-\`\`\`swift
+```swift
 if let textContainer = textContainer {
   // do many things with textContainer
 }
-\`\`\`
+```
 
 **Not Preferred:**
 
-\`\`\`swift
+```swift
 if let textContainer = self.textContainer {
   // do many things with textContainer
 }
-\`\`\`
+```
 
-\`\`\`swift
+```swift
 if let maybeThisCouldBeTextContainer = textContainer {
   // do many things with maybeThisCouldBeTextContainer
 }
-\`\`\`
+```
 
 - To differentiate between property names and arguments in initializers
 - When referencing properties in closure expressions
 
-\`\`\`swift
+```swift
 init(row: Int, column: Int) {
   self.row = row
   self.column = column
@@ -420,7 +420,7 @@ init(row: Int, column: Int) {
 	println(self.row)
   }
 }
-\`\`\`
+```
 
 **tl;dr**
 Only use `self` when the language requires it.
@@ -431,26 +431,26 @@ Only use `self` when the language requires it.
 For conciseness, if a computed property is read-only, omit the get clause. The get clause is required only when a set clause is provided.
 
 **Preferred:**
-\`\`\`swift
+```swift
 var diameter: Double {
   return radius \* 2.0
 }
-\`\`\`
+```
 
 **Not Preferred:**
-\`\`\`swift
+```swift
 var diameter: Double {
   get {
 	return radius * 2.0
   }
 }
-\`\`\`
+```
 
 ### Example definition
 
 Here's an example of a well-styled class definition:
 
-\`\`\`swift
+```swift
 class Circle: Shape {
   var x: Int, y: Int
   var radius: Double
@@ -486,7 +486,7 @@ class Circle: Shape {
 	return "(\(x),\(y))"
   }
 }
-\`\`\`
+```
 
 The example above demonstrates the following style guidelines:
 
@@ -501,20 +501,20 @@ The example above demonstrates the following style guidelines:
 
 Keep short function declarations on one line including the opening brace:
 
-\`\`\`swift
+```swift
 func reticulateSplines(spline: [Double]) -\> Bool {
   // reticulate code goes here
 }
-\`\`\`
+```
 
 For functions with long signatures, add line breaks at appropriate points and add an extra indent on subsequent lines:
 
-\`\`\`swift
+```swift
 func reticulateSplines(spline: [Double], adjustmentFactor: Double,
 	translateConstant: Int, comment: String) -> Bool {
   // reticulate code goes here
 }
-\`\`\`
+```
 
 
 ## Closure Expressions
@@ -576,16 +576,16 @@ let value = numbers
 Always use Swift's native types when available. Swift offers bridging to Objective-C so you can still use the full set of methods as needed.
 
 **Preferred:**
-\`\`\`swift
+```swift
 let width = 120.0                                    // Double
 let widthString = (width as NSNumber).stringValue    // String
-\`\`\`
+```
 
 **Not Preferred:**
-\`\`\`swift
+```swift
 let width: NSNumber = 120.0                                 // NSNumber
 let widthString: NSString = width.stringValue               // NSString
-\`\`\`
+```
 
 In Sprite Kit code, use `CGFloat` if it makes the code more succinct by avoiding too many conversions.
 
@@ -629,47 +629,47 @@ Use implicitly unwrapped types declared with `!` only for instance variables tha
 
 When accessing an optional value, use optional chaining if the value is only accessed once or if there are many optionals in the chain:
 
-\`\`\`swift
+```swift
 textContainer?.textLabel?.setNeedsDisplay()
-\`\`\`
+```
 
 Use optional binding when it's more convenient to unwrap once and perform multiple operations:
 
-\`\`\`swift
+```swift
 if let textContainer = textContainer {
   // do many things with textContainer
 }
-\`\`\`
+```
 
 Use `guard` unwrapping if the object is required for continuing the operation.
 guard` is prefered when doing early returns inside of a function.
 
-\`\`\`
+```
 guard let requiredObject = object else { return }
-\`\`\`
+```
 
 When naming optional variables and properties, avoid naming them like `optionalString` or `maybeView` since their optional-ness is already in the type declaration.
 
 For optional binding, shadow the original name when appropriate rather than using names like `unwrappedView` or `actualLabel`.
 
 **Preferred:**
-\`\`\`swift
+```swift
 var subview: UIView?
 
 // later on...
 if let subview = subview {
   // do something with unwrapped subview
 }
-\`\`\`
+```
 
 **Not Preferred:**
-\`\`\`swift
+```swift
 var optionalSubview: UIView?
 
 if let unwrappedSubview = optionalSubview {
   // do something with unwrappedSubview
 }
-\`\`\`
+```
 
 
 ### Struct Initializers
@@ -677,16 +677,16 @@ if let unwrappedSubview = optionalSubview {
 Use the native Swift struct initializers rather than the legacy CGGeometry constructors.
 
 **Preferred:**
-\`\`\`swift
+```swift
 let bounds = CGRect(x: 40.0, y: 20.0, width: 120.0, height: 80.0)
 var centerPoint = CGPoint(x: 96.0, y: 42.0)
-\`\`\`
+```
 
 **Not Preferred:**
-\`\`\`swift
+```swift
 let bounds = CGRectMake(40.0, 20.0, 120.0, 80.0)
 var centerPoint = CGPointMake(96.0, 42.0)
-\`\`\`
+```
 
 Prefer the struct-scope constants `CGRect.infiniteRect`, `CGRect.nullRect`, etc. over global constants `CGRectInfinite`, `CGRectNull`, etc. For existing variables, you can use the shorter `.zeroRect`.
 
@@ -720,16 +720,16 @@ The Swift compiler is able to infer the type of variables and constants. You can
 Prefer compact code and let the compiler infer the type for a constant or variable.
 
 **Preferred:**
-\`\`\`swift
+```swift
 let message = "Click the button"
 var currentBounds = computeViewBounds()
-\`\`\`
+```
 
 **Not Preferred:**
-\`\`\`swift
+```swift
 let message: String = "Click the button"
 var currentBounds: CGRect = computeViewBounds()
-\`\`\`
+```
 
 **NOTE**: Following this guideline means picking descriptive names is even more important than before.
 
@@ -817,18 +817,18 @@ resource.request().onComplete { [weak self]() response in
 Prefer the shortcut versions of type declarations over the full generics syntax.
 
 **Preferred:**
-\`\`\`swift
+```swift
 var deviceModels: [String]
 var employees: [Int: String]
 var faxNumber: Int?
-\`\`\`
+```
 
 **Not Preferred:**
-\`\`\`swift
+```swift
 var deviceModels: Array<String>
 var employees: Dictionary\<Int, String\>
 var faxNumber: Optional<Int>
-\`\`\`
+```
 
 
 ## Control Flow
@@ -841,28 +841,28 @@ Prefer `forEach` over `for-in` when applicable.
 
 Use named parameters when the object is being referenced more than once.
 
-\`\`\`swift
+```swift
 attendeeList.forEach { attendee in 
   print("\(attendee.name) is attending with \(attendee.guests.count) guests.") 
 }
-\`\`\`
+```
 
 Anonymous parameters
 
-\`\`\`swift
+```swift
 [subview, anotherSubview].forEach { view.addSubview($0) }
-\`\`\`
+```
 
 There are some disadvantages to using `forEach` over `for-in` which you should probably be
 aware of.
 
-\`\`\`swift
+```swift
 /// - Note: You cannot use the `break` or `continue` statement to exit the
 ///   current call of the `body` closure or skip subsequent calls.
 /// - Note: Using the `return` statement in the `body` closure will only
 ///   exit from the current call to `body`, not any outer scope, and won't
 ///   skip subsequent calls.
-\`\`\`
+```
 
 Reference: [apple/swift/stdlib/public/core/Sequence.swift][15]
 
@@ -873,7 +873,7 @@ So if the operation demands more control, then use `for-in`.
 Prefer the `for-in` style of `for` loop over the `for-condition-increment` style.
 
 **Preferred:**
-\`\`\`swift
+```swift
 for \_ in 0..\<3 {
   println("Hello three times")
 }
@@ -881,10 +881,10 @@ for \_ in 0..\<3 {
 for (index, person) in enumerate(attendeeList) {
   println("\(person) is at position \#\(index)")
 }
-\`\`\`
+```
 
 **Not Preferred:**
-\`\`\`swift
+```swift
 for var i = 0; i \< 3; i++ {
   println("Hello three times")
 }
@@ -893,7 +893,7 @@ for var i = 0; i \< attendeeList.count; i++ {
   let person = attendeeList[i]
   println("\(person) is at position \#\(i)")
 }
-\`\`\`
+```
 
 
 ## Semicolons
@@ -905,14 +905,14 @@ Do not write multiple statements on a single line separated with semicolons.
 The only exception to this rule is the `for-conditional-increment` construct, which requires semicolons. However, alternative `for-in` constructs should be used where possible.
 
 **Preferred:**
-\`\`\`swift
+```swift
 var swift = "not a scripting language"
-\`\`\`
+```
 
 **Not Preferred:**
-\`\`\`swift
+```swift
 var swift = "not a scripting language";
-\`\`\`
+```
 
 **NOTE**: Swift is very different to JavaScript, where omitting semicolons is [generally considered unsafe][16]
 
