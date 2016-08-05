@@ -16,11 +16,13 @@ There could be many similar cookbooks but this one is ours and we want to share 
 ## Table of contents
 
 If you wanna learn more about how we cook our apps you should visit those documents 
-- [Best Practices]() set of rules we find important while developing apps 
-- [Ingredients]() From which libraries / architecture / snippets and aproaches are our apps made
-- [Ackees’s Swift StyleGuide]() describes how we look at swift and how we write our code
+- [Best Practices][2] set of rules we find important while developing apps 
+- [Ingredients][3] From which libraries / architecture / snippets and aproaches are our apps made
+- [Ackees’s Swift StyleGuide][4] describes how we look at swift and how we write our code
 
 [1]:	https://cookpad.com/us/search/ackee
-
+[2]:	https://github.com/AckeeCZ/ios-cookbook/blob/master/BestPractices.md
+[3]:	https://github.com/AckeeCZ/ios-cookbook/blob/master/Ingredients.md
+[4]:	https://github.com/AckeeCZ/ios-cookbook/blob/master/SwiftStyle.md
 
 [image-1]:	https://github.com/AckeeCZ/ios-cookbook/raw/master/assets/ack_opensource_logo.png "Ackee iOS Cookbook"
