@@ -157,9 +157,8 @@ When design is in Sketch use it’s StyleKit for creating resolution-independent
 ### Fonts 
 Fotns should be stored in Resource folder. To obtain `real` name of the Font in the system use this method 
 
-```swift
-`extension UIFont {
-
+``swift
+extension UIFont {	
 class func printAllFonts() {
 UIFont.familyNames().forEach { (family) in
 UIFont.fontNamesForFamilyName(family).forEach({ (font) in
@@ -168,8 +167,7 @@ print(font)
 }
 }
 }
-```
-`
+``
 
 [1]:	https://itunes.apple.com/no/app/xcode/id497799835?mt=12
 [3]:	https://gist.github.com/neonichu/9487584/download#
