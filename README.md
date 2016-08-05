@@ -1,7 +1,7 @@
 
 ![][image-1]
 
-If you came here for some Ackee and salt fish recipes. I have bad news for you. We cook mobile & web apps and this is CookBook is about cooking the best apps with Prague based company Ackee. 
+If you came here for some Ackee and salt fish recipes then I have bad news for you. We cook mobile & web apps and this CookBook is about cooking the best apps with Prague based company Ackee. 
 
 However if you really want same Ackee and saltfish instead of swift here are some [recipes][1] for you :)
 
