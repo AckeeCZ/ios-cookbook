@@ -27,10 +27,10 @@ I would love to say that we really care about warnings. But I have to be honest 
 After upgrading to a new Xcode version plugins will become disabled until their list of compatible Xcode versions gets updated. In case you can't wait for an official update by the plugins' authors you can try to run [this script][3]. Be sure to find out your Xcode's version UUID first and update it in the script.
 
 You can get your Xcode version UUID by running
-\`\`\`shell
-/usr/libexec/PlistBuddy -c 'Print DVTPlugInCompatibilityUUID' "$(xcode-select -p)/../Info.plist"
-\`\`\`
-
+```shell
+`/usr/libexec/PlistBuddy -c 'Print DVTPlugInCompatibilityUUID' "$(xcode-select -p)/../Info.plist"
+```
+`
 
 ## Version Control
 
@@ -73,19 +73,19 @@ Block comments should generally be avoided, as code should be as self-documentin
 **Comments style**
 
 One-line:
-\`\`\`swift
-// YOLO: This shouldn’t crash
-\`\`\`
-
+```swift
+`// YOLO: This shouldn’t crash
+```
+`
 Multiple-lines:
 
-\`\`\`swift
-/\*
+```swift
+`/\*
    QUOTE: It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife.
 However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters.
  \*/
-\`\`\`
-
+```
+`
 
 ## Marks
 
@@ -94,13 +94,13 @@ Use // TODO: mark when you want mention piece of code as unfinished or needed fo
 ### MARK
 Use //MARK: for good code structure wthin a file
 
-\`\`\`swift
-// MARK: Lifecycle methods
+```swift
+`// MARK: Lifecycle methods
 \- (void) viewWillAppear(animated : Bool) {
 …
 }
-\`\`\`
-
+```
+`
 
 ## Streams, Blocks, delegates
 
@@ -157,8 +157,8 @@ When design is in Sketch use it’s StyleKit for creating resolution-independent
 ### Fonts 
 Fotns should be stored in Resource folder. To obtain `real` name of the Font in the system use this method 
 
-\`\`\`swift
-extension UIFont {
+```swift
+`extension UIFont {
 
 class func printAllFonts() {
 UIFont.familyNames().forEach { (family) in
@@ -168,7 +168,8 @@ print(font)
 }
 }
 }
-\`\`\`
+```
+`
 
 [1]:	https://itunes.apple.com/no/app/xcode/id497799835?mt=12
 [3]:	https://gist.github.com/neonichu/9487584/download#
