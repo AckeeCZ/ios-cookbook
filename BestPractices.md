@@ -74,18 +74,17 @@ Block comments should generally be avoided, as code should be as self-documentin
 
 One-line:
 ```swift
-`// YOLO: This shouldn’t crash
+// YOLO: This shouldn’t crash
 ```
-`
+
 Multiple-lines:
 
 ```swift
-`/\*
+/*
    QUOTE: It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife.
 However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters.
- \*/
+ */
 ```
-`
 
 ## Marks
 
@@ -95,12 +94,11 @@ Use // TODO: mark when you want mention piece of code as unfinished or needed fo
 Use //MARK: for good code structure wthin a file
 
 ```swift
-`// MARK: Lifecycle methods
-\- (void) viewWillAppear(animated : Bool) {
-…
+// MARK: Lifecycle methods
+- (void) viewWillAppear(animated : Bool) {
+  …
 }
 ```
-`
 
 ## Streams, Blocks, delegates
 
@@ -158,19 +156,13 @@ When design is in Sketch use it’s StyleKit for creating resolution-independent
 Fotns should be stored in Resource folder. To obtain `real` name of the Font in the system use this method 
 
 ```swift
-`extension UIFont {	
-class func printAllFonts() {
-UIFont.familyNames().forEach { (family) in
-UIFont.fontNamesForFamilyName(family).forEach({ (font) in
-print(font)
-})
-}
-}
+extension UIFont {	
+  class func printAllFonts() {
+    UIFont.familyNames().forEach { (family) in
+	  UIFont.fontNamesForFamilyName(family).forEach({ (font) in
+	    print(font)
+	  })
+    }
+  }
 }
 ```
-`
-
-[1]:	https://itunes.apple.com/no/app/xcode/id497799835?mt=12
-[3]:	https://gist.github.com/neonichu/9487584/download#
-[4]:	https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
-[6]:	http://semver.org/
