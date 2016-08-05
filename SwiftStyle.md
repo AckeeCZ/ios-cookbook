@@ -1,4 +1,4 @@
-```# Ackee Swift Style Guide
+# Ackee Swift Style Guide
 
 Here are the swift conventions we conform to when we write our code. 
 
@@ -58,9 +58,9 @@ let userId: UserId
 For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable.
 
 ```swift
-func dateFromString(dateString: String) -\> NSDate
-func convertPointAt(column column: Int, row: Int) -\> CGPoint
-func timedAction(afterDelay delay: NSTimeInterval, perform action: SKAction) -\> SKAction!
+func dateFromString(dateString: String) -> NSDate
+func convertPointAt(column column: Int, row: Int) -> CGPoint
+func timedAction(afterDelay delay: NSTimeInterval, perform action: SKAction) -> SKAction!
 
 // would be called like this:
 dateFromString("2014-03-14")
@@ -96,6 +96,7 @@ enum Shape {
   case triangle
   case circle
 }
+```
 
 
 ### Class Prefixes
@@ -104,7 +105,7 @@ Swift types are all automatically namespaced by the module that contains them. A
 
 Old code does not have to be refactored
 
-``swift
+```swift
 import MyModule
 
 var myClass = MyModule.MyClass()
@@ -140,16 +141,16 @@ Generic type parameters should be descriptive, upper camel case names. When a ty
 
 **Preferred:**
 ```swift
-struct Stack\<Element\> { ... }
-func writeTo\<Target: OutputStream\>(inout target: Target)
-func max\<T: Comparable\>(x: T, _ y: T) -\> T
+struct Stack<Element> { ... }
+func writeTo<Target: OutputStream>(inout target: Target)
+func max<T: Comparable>(x: T, _ y: T) -> T
 ```
 
 **Not Preferred:**
 ```swift
-struct Stack\<T\> { ... }
-func writeTo\<target: OutputStream\>(inout t: target)
-func max\<Thing: Comparable\>(x: Thing, _ y: Thing) -\> Thing
+struct Stack<T> { ... }
+func writeTo<target: OutputStream>(inout t: target)
+func max<Thing: Comparable>(x: Thing, _ y: Thing) -> Thing
 ```
 
 ## Code Organization
@@ -203,12 +204,12 @@ override func didReceiveMemoryWarning() {
   // Dispose of any resources that can be recreated.
 }
 
-override func numberOfSectionsInTableView(tableView: UITableView) -\> Int {
+override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
    // #warning Incomplete implementation, return the number of sections
    return 1
 }
 
-override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -\> Int {
+override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
   // #warning Incomplete implementation, return the number of rows
   return Database.contacts.count
 }
@@ -217,7 +218,7 @@ override func tableView(tableView: UITableView, numberOfRowsInSection section: I
 
 **Preferred:**
 ```swift
-override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -\> Int {
+override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
   return Database.contacts.count
 }
 ```
@@ -341,15 +342,15 @@ self.radius = radius
 self.init(x: x, y: y, radius: diameter / 2)
   }
 
-  func describe() -\> String {
+  func describe() -> String {
 return "I am a circle at \(centerString()) with an area of \(computeArea())"
   }
 
-  override func computeArea() -\> Double {
+  override func computeArea() -> Double {
 return M_PI * radius * radius
   }
 
-  private func centerString() -\> String {
+  private func centerString() -> String {
 return "(\(x),\(y))"
   }
 }
@@ -474,15 +475,15 @@ class Circle: Shape {
 	self.init(x: x, y: y, radius: diameter / 2.0)
   }
 
-  func describe() -\> String {
+  func describe() -> String {
 	return "I am a circle at \(centerString()) with an area of \(computeArea())"
   }
 
-  override func computeArea() -\> Double {
+  override func computeArea() -> Double {
 	return M_PI * radius * radius
   }
 
-  private func centerString() -\> String {
+  private func centerString() -> String {
 	return "(\(x),\(y))"
   }
 }
@@ -502,7 +503,7 @@ The example above demonstrates the following style guidelines:
 Keep short function declarations on one line including the opening brace:
 
 ```swift
-func reticulateSplines(spline: [Double]) -\> Bool {
+func reticulateSplines(spline: [Double]) -> Bool {
   // reticulate code goes here
 }
 ```
@@ -555,7 +556,7 @@ For single-expression closures where the context is clear, use implicit returns:
 
 ```swift
 attendeeList.sort { a, b in
-  a \> b
+  a > b
 }
 ```
 
@@ -566,7 +567,7 @@ let value = numbers.map { $0 * 2 }.filter { $0 % 3 == 0 }.indexOf(90)
 
 let value = numbers
    .map {$0 * 2}
-   .filter {$0 \> 50}
+   .filter {$0 > 50}
    .map {$0 + 10}
 ```
 
@@ -697,7 +698,7 @@ Consider using lazy initialization for finer grain control over object lifetime.
 ```swift
 lazy var locationManager: CLLocationManager = self.makeLocationManager()
 
-private func makeLocationManager() -\> CLLocationManager {
+private func makeLocationManager() -> CLLocationManager {
   let manager = CLLocationManager()
   manager.desiredAccuracy = kCLLocationAccuracyBest
   manager.delegate = self
@@ -746,9 +747,9 @@ var faxNumber: Int?
 
 **Not Preferred:**
 ```swift
-var deviceModels: Array\<String\>
-var employees: Dictionary\<Int, String\>
-var faxNumber: Optional\<Int\>
+var deviceModels: Array<String>
+var employees: Dictionary<Int, String>
+var faxNumber: Optional<Int>
 ```
 
 ## Functions vs Methods
@@ -826,7 +827,7 @@ var faxNumber: Int?
 **Not Preferred:**
 ```swift
 var deviceModels: Array<String>
-var employees: Dictionary\<Int, String\>
+var employees: Dictionary<Int, String>
 var faxNumber: Optional<Int>
 ```
 
@@ -874,7 +875,7 @@ Prefer the `for-in` style of `for` loop over the `for-condition-increment` style
 
 **Preferred:**
 ```swift
-for \_ in 0..\<3 {
+for \_ in 0..<3 {
   println("Hello three times")
 }
 
@@ -885,11 +886,11 @@ for (index, person) in enumerate(attendeeList) {
 
 **Not Preferred:**
 ```swift
-for var i = 0; i \< 3; i++ {
+for var i = 0; i < 3; i++ {
   println("Hello three times")
 }
 
-for var i = 0; i \< attendeeList.count; i++ {
+for var i = 0; i < attendeeList.count; i++ {
   let person = attendeeList[i]
   println("\(person) is at position \#\(i)")
 }
@@ -922,7 +923,7 @@ When coding with conditionals, the left hand margin of the code should be the "g
 
 **Preferred:**
 ```swift
-func computeFFT(context: Context?, inputData: InputData?) throws -\> Frequencies {
+func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
 
   guard let context = context else { throw FFTError.NoContext }
   guard let inputData = inputData else { throw FFTError.NoInputData }
@@ -935,7 +936,7 @@ func computeFFT(context: Context?, inputData: InputData?) throws -\> Frequencies
 
 **Not Preferred:**
 ```swift
-func computeFFT(context: Context?, inputData: InputData?) throws -\> Frequencies {
+func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
 
   if let context = context {
 if let inputData = inputData {
@@ -1022,9 +1023,4 @@ var defaultBlue : UIColor {
 
 ## Attribution
 
-This document is based on the [raywenderlich.com Swift Style Guide][17] and [Hyper Oslo Swift Style Guide]().
-
-[1]:	https://github.com/hyperoslo/iOS-playbook/blob/master/style-guidelines/ObjC.md
-[15]:	https://github.com/apple/swift/blob/master/stdlib/public/core/Sequence.swift#L119-L123
-[16]:	http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript
-[17]:	https://github.com/raywenderlich/swift-style-guide/blob/master/README.markdown
+This document is based on the [raywenderlich.com Swift Style Guide]() and [Hyper Oslo Swift Style Guide]().
