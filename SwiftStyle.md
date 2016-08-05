@@ -1012,13 +1012,13 @@ If you have Sketch StyleKit in your project use it for colors.
 else use UIColor extension and name colors with according name 
 
 
-```swift`
+```swift
 extension UIColor {
-var defaultBlue : UIColor {
-{
- return UIColor(hex:0x0000FF)
-}
-}
+  var defaultBlue : UIColor {
+    {
+      return UIColor(hex:0x0000FF)
+    }
+  }
 }
 ```
 
