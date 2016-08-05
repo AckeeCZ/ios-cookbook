@@ -1,6 +1,5 @@
 
 ![][image-1]
-# Ackee iOS Cookbook
 
 If you came here for some Ackee and salt fish recipes. I have bad news for you. We cook mobile & web apps and this is CookBook is about cooking the best apps with Prague based company Ackee. 
 
@@ -24,4 +23,4 @@ If you wanna learn more about how we cook our apps you should visit those docume
 [1]:	https://cookpad.com/us/search/ackee
 
 
-[image-1]:	assets/logo.png "Ackee iOS Cookbook"
+[image-1]:	https://github.com/AckeeCZ/ios-cookbook/raw/master/assets/ack_opensource_logo.png "Ackee iOS Cookbook"
