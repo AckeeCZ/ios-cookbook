@@ -27,10 +27,11 @@ I would love to say that we really care about warnings. But I have to be honest 
 After upgrading to a new Xcode version plugins will become disabled until their list of compatible Xcode versions gets updated. In case you can't wait for an official update by the plugins' authors you can try to run [this script][3]. Be sure to find out your Xcode's version UUID first and update it in the script.
 
 You can get your Xcode version UUID by running
+
 ```shell
-`/usr/libexec/PlistBuddy -c 'Print DVTPlugInCompatibilityUUID' "$(xcode-select -p)/../Info.plist"
+/usr/libexec/PlistBuddy -c 'Print DVTPlugInCompatibilityUUID' "$(xcode-select -p)/../Info.plist"
 ```
-`
+
 
 ## Version Control
 

@@ -1,4 +1,4 @@
-# Ackee Swift Style Guide
+```# Ackee Swift Style Guide
 
 Here are the swift conventions we conform to when we write our code. 
 
@@ -22,43 +22,43 @@ Use descriptive names with camel case for classes, methods, variables, etc. Type
 **Preferred:**
 
 ```swift
-`private let maximumWidgetCount = 100
+private let maximumWidgetCount = 100
 
 class WidgetContainer {
   var widgetButton: UIButton
   let widgetHeightPercentage = 0.85
 }
 ```
-`
+
 **Not Preferred:**
 
 ```swift
-`let MAX_WIDGET_COUNT = 100
+let MAX_WIDGET_COUNT = 100
 
 class app_widgetContainer {
   var wBut: UIButton
   let wHeightPct = 0.85
 }
 ```
-`
+
 Abbreviations and and acronyms should generally be avoided. Following the Apple Design Guidelines, abbreviations and initialisms that appear in all uppercase should be uniformly uppercase or lowercase. Examples:
 
 **Preferred**
 ```swift
-`let urlString: URLString
+let urlString: URLString
 let userID: UserID
 ```
-`
+
 **Not Preferred**
 ```swift
-`let uRLString: UrlString
+let uRLString: UrlString
 let userId: UserId
 ```
-`
+
 For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable.
 
 ```swift
-`func dateFromString(dateString: String) -\> NSDate
+func dateFromString(dateString: String) -\> NSDate
 func convertPointAt(column column: Int, row: Int) -\> CGPoint
 func timedAction(afterDelay delay: NSTimeInterval, perform action: SKAction) -\> SKAction!
 
@@ -67,11 +67,11 @@ dateFromString("2014-03-14")
 convertPointAt(column: 42, row: 13)
 timedAction(afterDelay: 1.0, perform: someOtherAction)
 ```
-`
+
 For methods, follow the standard Apple convention of referring to the first parameter in the method name:
 
 ```swift
-`class Counter {
+class Counter {
   func combineWith(otherCounter: Counter, options: Dictionary?) { ... }
   func incrementBy(amount: Int) { ... }
 }
@@ -90,7 +90,7 @@ Following Apple's API Design Guidelines, protocols names that describe what some
 Following Apple's API Design Guidelines for Swift 3, use lowerCamelCase for enumeration values.
 
 ```swift
-`enum Shape {
+enum Shape {
   case rectangle
   case square
   case triangle
@@ -104,21 +104,21 @@ Swift types are all automatically namespaced by the module that contains them. A
 
 Old code does not have to be refactored
 
-\`\`\`swift
+``swift
 import MyModule
 
 var myClass = MyModule.MyClass()
-\`\`\`
+```
 
 You **should not** add prefixes to your Swift types.
 
 If you need to expose a Swift type for use within Objective-C you can provide a suitable prefix (following our [Objective-C style guide][1]) as follows:
 
-\`\`\`swift
+```swift
 @objc (RWTChicken) class Chicken {
    ...
 }
-\`\`\`
+```
 
 ### Selectors
 
@@ -126,32 +126,32 @@ Selectors are Obj-C methods that act as handlers for many Cocoa and Cocoa Touch 
 
 **Preferred:**
 ```swift
-`let sel = #selector(viewDidLoad)
+let sel = #selector(viewDidLoad)
 ```
-`
+
 **Not Preferred:**
 ```swift
-`let sel = #selector(ViewController.viewDidLoad)
+let sel = #selector(ViewController.viewDidLoad)
 ```
-`
+
 ### Generics
 
 Generic type parameters should be descriptive, upper camel case names. When a type name doesn't have a meaningful relationship or role, use a traditional single uppercase letter such as `T`, `U`, or `V`.
 
 **Preferred:**
 ```swift
-`struct Stack\<Element\> { ... }
+struct Stack\<Element\> { ... }
 func writeTo\<Target: OutputStream\>(inout target: Target)
 func max\<T: Comparable\>(x: T, _ y: T) -\> T
 ```
-`
+
 **Not Preferred:**
 ```swift
-`struct Stack\<T\> { ... }
+struct Stack\<T\> { ... }
 func writeTo\<target: OutputStream\>(inout t: target)
 func max\<Thing: Comparable\>(x: Thing, _ y: Thing) -\> Thing
 ```
-`
+
 ## Code Organization
 
 Use extensions to organize your code into logical blocks of functionality. Each extension should be set off with a `// MARK: -` comment to keep things well-organized.
@@ -164,7 +164,7 @@ Use extensions to organize your code into logical blocks of functionality. Each 
 
 **Preferred:**
 ```swift
-`class MyViewcontroller: UIViewController {
+class MyViewcontroller: UIViewController {
   // class stuff here
 }
 
@@ -178,14 +178,14 @@ extension MyViewcontroller: UIScrollViewDelegate {
   // scroll view delegate methods
 }
 ```
-`
+
 **Not Preferred:**
 ```swift
-`class MyViewcontroller: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
+class MyViewcontroller: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
   // all methods
 }
 ```
-`
+
 Since the compiler does not allow you to re-declare protocol conformance in a derived class, it is not always required to replicate the extension groups of the base class. This is especially true if the derived class is a terminal class and a small number of methods are being overriden. When to preserve the extension groups is left to the discretion of the author.
 
 For UIKit view controllers, consider grouping lifecyle, custom accessors, and IBAction in separate class extensions.
@@ -198,7 +198,7 @@ Aspirational methods not directly associated with the tutorial whose implementat
 
 **Not Preferred:**
 ```swift
-`override func didReceiveMemoryWarning() {
+override func didReceiveMemoryWarning() {
    super.didReceiveMemoryWarning()
   // Dispose of any resources that can be recreated.
 }
@@ -214,14 +214,14 @@ override func tableView(tableView: UITableView, numberOfRowsInSection section: I
 }
 
 ```
-`
+
 **Preferred:**
 ```swift
-`override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -\> Int {
+override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -\> Int {
   return Database.contacts.count
 }
 ```
-`
+
 ### Minimal Imports
 
 Keep imports minimal. For example, don't import `UIKit` when importing `Foundation` will suffice.
@@ -238,13 +238,13 @@ Keep imports minimal. For example, don't import `UIKit` when importing `Foundati
 
 **Preferred:**
 ```swift
-`if user.isHappy {
+if user.isHappy {
   // Do something
 } else {
   // Do something else
 }
 ```
-`
+
 **Not Preferred:**
 \`\`\`swift
 if user.isHappy
@@ -267,16 +267,16 @@ else {
 
 **Preferred:**
 ```swift
-`if user.isHappy {
+if user.isHappy {
   // Do something
 } else {
   // Do something else
 }
 ```
-`
+
 **Not Preferred:**
 ```swift
-`if user.isHappy
+if user.isHappy
 {
   // Do something
 }
@@ -284,25 +284,25 @@ else {
   // Do something else
 }
 ```
-`
+
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
 
 * Colons always have no space on the left and one space on the right. Exceptions are the ternary operator `? :` and empty dictionary `[:]`.
 
 **Preferred:**
 ```swift
-`class TestDatabase: Database {
+class TestDatabase: Database {
   var data: [String: CGFloat]() = ["A": 1.2, "B": 3.2]()
 }
 ```
-`
+
 **Not Preferred:**
 ```swift
-`class TestDatabase : Database {
+class TestDatabase : Database {
   var data :[String:CGFloat]() = ["A" : 1.2, "B":3.2]()
 }
 ```
-`
+
 
 ## Classes and Structs
 
@@ -319,7 +319,7 @@ Sometimes, things should be structs but need to conform to `AnyObject` or are hi
 Here's an example of a well-styled class definition:
 
 ```swift
-`class Circle: Shape {
+class Circle: Shape {
   var x: Int, y: Int
   var radius: Double
   var diameter: Double {
@@ -354,7 +354,7 @@ return "(\(x),\(y))"
   }
 }
 ```
-`
+
 The example above demonstrates the following style guidelines:
 
  - Specify types for properties, variables, constants, argument declarations and other statements with a space after the colon but not before, e.g. `x: Int`, and `Circle: Shape`.
@@ -371,7 +371,7 @@ For conciseness, avoid using `self` since Swift does not require it to access an
 Use `self` when required to differentiate between property names and arguments in initializers, and when referencing properties in closure expressions (as required by the compiler):
 
 ```swift
-`class BoardLocation {
+class BoardLocation {
   let row: Int, column: Int
 
   init(row: Int, column: Int) {
@@ -523,7 +523,7 @@ Use trailing closure syntax only if there's a single closure expression paramete
 
 **Preferred:**
 ```swift
-`UIView.animateWithDuration(1.0) {
+UIView.animateWithDuration(1.0) {
   self.myView.alpha = 0
 }
 
@@ -536,10 +536,10 @@ self.myView.removeFromSuperview()
   }
 )
 ```
-`
+
 **Not Preferred:**
 ```swift
-`UIView.animateWithDuration(1.0, animations: {
+UIView.animateWithDuration(1.0, animations: {
   self.myView.alpha = 0
 })
 
@@ -550,26 +550,26 @@ self.myView.alpha = 0
 self.myView.removeFromSuperview()
 }
 ```
-`
+
 For single-expression closures where the context is clear, use implicit returns:
 
 ```swift
-`attendeeList.sort { a, b in
+attendeeList.sort { a, b in
   a \> b
 }
 ```
-`
+
 Chained methods using trailing closures should be clear and easy to read in context. Decisions on spacing, line breaks, and when to use named versus anonymous arguments is left to the discretion of the author. Examples:
 
 ```swift
-`let value = numbers.map { $0 * 2 }.filter { $0 % 3 == 0 }.indexOf(90)
+let value = numbers.map { $0 * 2 }.filter { $0 % 3 == 0 }.indexOf(90)
 
 let value = numbers
    .map {$0 * 2}
    .filter {$0 \> 50}
    .map {$0 + 10}
 ```
-`
+
 
 ## Types
 
@@ -600,7 +600,7 @@ You can define constants on a type rather than an instance of that type using ty
 
 **Preferred:**
 ```swift
-`enum Math {
+enum Math {
   static let e  = 2.718281828459045235360287
   static let pi = 3.141592653589793238462643
 }
@@ -612,13 +612,13 @@ radius * Math.pi * 2 // circumference
 
 **Not Preferred:**
 ```swift
-`let e  = 2.718281828459045235360287  // pollutes global namespace
+let e  = 2.718281828459045235360287  // pollutes global namespace
 let pi = 3.141592653589793238462643  
 }
 
 radius * pi * 2 // is pi instance data or a global constant?
 ```
-`
+
 
 
 ### Optionals
@@ -642,7 +642,7 @@ if let textContainer = textContainer {
 \`\`\`
 
 Use `guard` unwrapping if the object is required for continuing the operation.
-`guard` is prefered when doing early returns inside of a function.
+guard` is prefered when doing early returns inside of a function.
 
 \`\`\`
 guard let requiredObject = object else { return }
@@ -695,7 +695,7 @@ Prefer the struct-scope constants `CGRect.infiniteRect`, `CGRect.nullRect`, etc.
 Consider using lazy initialization for finer grain control over object lifetime. This is especially true for `UIViewController` that loads views lazily. You can either use a closure that is immediately called `{ }()` or call a private factory method. Example:
 
 ```swift
-`lazy var locationManager: CLLocationManager = self.makeLocationManager()
+lazy var locationManager: CLLocationManager = self.makeLocationManager()
 
 private func makeLocationManager() -\> CLLocationManager {
   let manager = CLLocationManager()
@@ -705,7 +705,7 @@ private func makeLocationManager() -\> CLLocationManager {
   return manager
 }
 ```
-`
+
 **Notes:**
   - `[unowned self]` is not required here. A retain cycle is not created.
   - Location manager has a side-effect for popping up UI to ask the user for permission so fine grain control makes sense here.
@@ -739,18 +739,18 @@ Prefer the shortcut versions of type declarations over the full generics syntax.
 
 **Preferred:**
 ```swift
-`var deviceModels: [String]()
+var deviceModels: [String]()
 var employees: [Int: String]()
 var faxNumber: Int?
 ```
-`
+
 **Not Preferred:**
 ```swift
-`var deviceModels: Array\<String\>
+var deviceModels: Array\<String\>
 var employees: Dictionary\<Int, String\>
 var faxNumber: Optional\<Int\>
 ```
-`
+
 ## Functions vs Methods
 
 Free functions, which aren't attached to a class or type, should be used sparingly. When possible, prefer to use a method instead of a free function. This aids in readability and discoverability.
@@ -759,22 +759,22 @@ Free functions are most appropriate when they aren't associated with any particu
 
 **Preferred**
 ```swift
-`let sorted = items.mergeSort()  // easily discoverable
+let sorted = items.mergeSort()  // easily discoverable
 rocket.launch()  // clearly acts on the model
 ```
-`
+
 **Not Preferred**
 ```swift
-`let sorted = mergeSort(items)  // hard to discover
+let sorted = mergeSort(items)  // hard to discover
 launch(&rocket)
 ```
-`
+
 **Free Function Exceptions**
 ```swift
-`let tuples = zip(a, b)  // feels natural as a free function (symmetry)
+let tuples = zip(a, b)  // feels natural as a free function (symmetry)
 let value = max(x,y,z)  // another free function that feels natural
 ```
-`
+
 ## Memory Management
 
 Code (even non-production, tutorial demo code) should not create reference cycles. Analyze your object graph and prevent strong cycles with `weak` and `unowned` references. Alternatively, use value types (`struct`, `enum`) to prevent cycles altogether.
@@ -785,13 +785,13 @@ Extend object lifetime using the `[weak self]` and `guard let strongSelf = self 
 
 **Preferred**
 ```swift
-`resource.request().onComplete { [weak self]() response in
+resource.request().onComplete { [weak self]() response in
   guard let strongSelf = self else { return }
   let model = strongSelf.updateModel(response)
   strongSelf.updateUI(model)
 }
 ```
-`
+
 **Not Preferred**
 ```swift
 `// might crash if self is released before response returns
@@ -800,7 +800,7 @@ resource.request().onComplete { [unowned self]() response in
   self.updateUI(model)
 }
 ```
-`
+
 **Not Preferred**
 ```swift
 `// deallocate could happen between updating the model and updating UI
@@ -809,7 +809,7 @@ resource.request().onComplete { [weak self]() response in
   self?.updateUI(model)
 }
 ```
-`
+
 
 
 ### Syntactic Sugar
@@ -922,7 +922,7 @@ When coding with conditionals, the left hand margin of the code should be the "g
 
 **Preferred:**
 ```swift
-`func computeFFT(context: Context?, inputData: InputData?) throws -\> Frequencies {
+func computeFFT(context: Context?, inputData: InputData?) throws -\> Frequencies {
 
   guard let context = context else { throw FFTError.NoContext }
   guard let inputData = inputData else { throw FFTError.NoInputData }
@@ -932,10 +932,10 @@ When coding with conditionals, the left hand margin of the code should be the "g
   return frequencies
 }
 ```
-`
+
 **Not Preferred:**
 ```swift
-`func computeFFT(context: Context?, inputData: InputData?) throws -\> Frequencies {
+func computeFFT(context: Context?, inputData: InputData?) throws -\> Frequencies {
 
   if let context = context {
 if let inputData = inputData {
@@ -952,18 +952,18 @@ throw FFTError.NoContext
   }
 }
 ```
-`
+
 When multiple optionals are unwrapped either with `guard` or `if let`, minimize nesting by using the compound version when possible. Example:
 
 **Preferred:**
 ```swift
-`guard let number1 = number1, number2 = number2, number3 = number3 else { fatalError("impossible") }
+guard let number1 = number1, number2 = number2, number3 = number3 else { fatalError("impossible") }
 // do something with numbers
 ```
-`
+
 **Not Preferred:**
 ```swift
-`if let number1 = number1 {
+if let number1 = number1 {
   if let number2 = number2 {
 if let number3 = number3 {
   // do something with numbers
@@ -980,7 +980,7 @@ else {
   fatalError("impossible")
 }
 ```
-`
+
 ### Failing Guards
 
 Guard statements are required to exit in some way. Generally, this should be simple one line statement such as `return`, `throw`, `break`, `continue`, and `fatalError()`. Large code blocks should be avoided. If cleanup code is required for multiple exit points, consider using a `defer` block to avoid cleanup code duplication.
@@ -992,18 +992,18 @@ Parenthesis around conditionals are not required and should be omitted.
 
 **Preferred:**
 ```swift
-`if name == "Hello" {
+if name == "Hello" {
   print("World")
 }
 ```
-`
+
 **Not Preferred:**
 ```swift
-`if (name == "Hello") {
+if (name == "Hello") {
   print("World")
 }
 ```
-`
+
 ## Resource code
 
 If you have Sketch StyleKit in your project use it for colors. 
@@ -1019,7 +1019,7 @@ var defaultBlue : UIColor {
 }
 }
 ```
-`
+
 ## Attribution
 
 This document is based on the [raywenderlich.com Swift Style Guide][17] and [Hyper Oslo Swift Style Guide]().
