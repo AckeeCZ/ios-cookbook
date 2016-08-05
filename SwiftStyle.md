@@ -75,6 +75,7 @@ class Counter {
   func combineWith(otherCounter: Counter, options: Dictionary?) { ... }
   func incrementBy(amount: Int) { ... }
 }
+```
 
 ### Protocols
 
