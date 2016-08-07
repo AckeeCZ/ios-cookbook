@@ -45,7 +45,7 @@ The ViewModel has full control over what happens next.
 No waiting for a result, no `updateView(model:)` calls,
 just knowing that if some ViewModel data changes as a result of this or any other action, it will be observed. 
 
-[//TODO: link na mvvm](http://google.com)
+[See an example of MVVM here](https://github.com/richeterre/SwiftGoal/tree/master/SwiftGoal)
 
 #### How to be a great reactive programmer
 
@@ -72,11 +72,11 @@ or discuss with a colleague if the problem seems serious.
 
 - **Ask the right questions (and lots of them).**
 ReactiveCocoa is a consise way to define the behavior of a program, but it can't match the human language.
-**Ask questions like:** *"I have **this** data. How do I transform it into **this other** data?"*,
-*"Is there an operator which basically does **this thing**?"*
-**Don't ask questions like:** *"So I have these 3 signals, right? And somehow it's not `flatMap`pin' for me."*    
+**Ask questions like:** *"I have this data. How do I transform it into this other data?"*,
+*"Is there an operator which basically does this thing?"*
+**Don't ask questions like:** *"So I have these 3 signals, right? And somehow it's not flatMappin' for me."*    
 
-- **Practise your `flatMap`pin'**.
+- **Practise your flatMappin'**.
 So, you like reactive code, but the compiler doesn't? Chances are it's a simple mistake.
 Xcode shows an error like *`ambiguous use of flatMap(_:, trasform:)`*,
 but what the compiler is really saying is:
