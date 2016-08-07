@@ -80,7 +80,7 @@ ReactiveCocoa is a consise way to define the behavior of a program, but it can't
 So, you like reactive code, but the compiler doesn't? Chances are it's a simple mistake.
 Xcode shows an error like *`ambiguous use of flatMap(_:, trasform:)`*,
 but what the compiler is really saying is:
-![](http://img.pandawhale.com/post-21975-Jerry-Maguire-help-me-help-you-tj9G.gif)
+![Alt Text](http://img.pandawhale.com/post-21975-Jerry-Maguire-help-me-help-you-tj9G.gif)
 
     When writing a `flatMap`:
     1. Ensure that the Error types match between the outer (input) signal and the inner (output) signals. Use `promoteErrors(_:)`, `mapError(_:)` or `flatMapError(_:)` if they don't. 
