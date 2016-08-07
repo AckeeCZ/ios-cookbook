@@ -49,6 +49,19 @@ On every project we do merge requests. If there are 2 developers on project they
 - Always choose destination branch the one from which you originally branched.‼️
 - Only `development`branch could be merged into `master` 💀 
 
+### Code review
+Codereview is done in gitlab. There are 4 levels of reviewer's anger:
+
+| emoji | shortcut          | meaning                                                                                      | merged |   |
+|--------|-------------------|----------------------------------------------------------------------------------------------|--------|---|
+| ❔      | :grey_question:   | I'm probably just bored and want to talk :)                                                 | YES    |   |
+| ❕      | :grey_exclamation | I will merge this but you should either not do this again or defend it here in the comments. | YES    |   |
+| ❗      | :exclamation:     | Won't be merged, unless it's a question and you reply that there's no problem.              | MAYBE     |   |
+| 💩      | :shit:            | Won't be merged. Also, you should walk through sewers for a month. _(Rarely Used)_           | NO     |   |
+
+
+Other emojis like ➕ are also used, but we dont need a convention for every emoji out there. ❤ 
+
 
 ## Deployment
 
