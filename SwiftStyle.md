@@ -835,6 +835,37 @@ var faxNumber: Optional<Int>
 
 ## Control Flow
 
+#### Functional constructs
+
+Always prefer functional constructs over `for-in` loops and mutable state.
+
+**Preferred:**
+```
+    //get list of names longer than the number of the child's older siblings (Comparable sorts by age)
+    return parents.flatMap { 
+        $0.childen
+            .sorted()
+            .map { $0.name }
+            .enumerated()
+            .filter { i, n in n.characters.count > i }
+            .map { $1 } 
+    } 
+```
+**Not Preferred:**
+```
+    //get list of names longer than the number of the child's older siblings (Comparable sorts by age)
+    var results: [String] = []
+    for parent in parents {
+        for index, child in parent.children.sorted().enumerated() {
+            let name = child.name
+            if name.characters.count > index {
+                results.append(name)
+            }
+        }
+    }
+    return results 
+```
+
 #### forEach
 
 Prefer `forEach` over `for-in` when applicable.
