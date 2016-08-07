@@ -82,13 +82,6 @@ ReactiveCocoa is a consise way to define the behavior of a program, but it can't
 **Don't ask questions like:** *"So I have these 3 signals, right? And somehow it's not flatMappin' for me."*    
 
 - **Practise your flatMappin'**.
-=======
-**Ask questions like:** *"I have **this** data. How do I transform it into **this other** data?"*,
-*"Is there an operator which basically does **this thing**?"*
-**Don't ask questions like:** *"So I have these 3 signals, right? And somehow it's not `flatMap`pin' for me."*    
-
-- **Practise your `flatMap`pin'**.
->>>>>>> origin/ps/ReactiveCocoa
 So, you like reactive code, but the compiler doesn't? Chances are it's a simple mistake.
 Xcode shows an error like *`ambiguous use of flatMap(_:, trasform:)`*,
 but what the compiler is really saying is:
