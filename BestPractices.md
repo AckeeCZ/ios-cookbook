@@ -67,6 +67,8 @@ There are few exceptions like public API and particular piece of code which migh
 
 When they are needed, comments should be used to explain **why** a particular piece of code does something. 
 
+Don't use comments in place of `assertionFailure`s.
+
 It is definitely not allowed to use comments for hiding “unwanted” code in source control. 
 
 Block comments should generally be avoided, as code should be as self-documenting as possible, with only the need for intermittent, few-line explanations. This does not apply to those comments used to generate documentation.
