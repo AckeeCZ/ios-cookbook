@@ -2,7 +2,7 @@
 
 We release often so we prepared several steps you have to follow
 
-1. Merge sure your changes were merged from `development` branch to  `master` branch ❗️
+1. Make sure your changes were merged from `development` branch to  `master` branch ❗️
 2. Make sure your changes went through code review 🔎
 3. Make sure your tester has blisters on his / her hands from exhausting user/monkey testing 🖐
 4. Create tag for version in `master`branch ✔️ 
