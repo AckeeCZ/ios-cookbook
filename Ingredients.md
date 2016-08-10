@@ -11,7 +11,21 @@ Result? Consistent code across various projects, quality codebase and happiness 
 ## Libraries
 Set of Libraries we use during development
 ### Networking
+
+### Mapping
+
+For mapping JSON objects we use [Argo](https://github.com/thoughtbot/Argo) with reactive extensions we created. It really simplifies asynchronous mapping.
+
+To make our work even simpler we use Argo in combination with [Curry](https://github.com/thoughtbot/Curry). Examples of usage can be found at [Argo github](https://github.com/thoughtbot/Argo).
+
 ### CoreData
+
+Our projects use Swift structs and manipulation with them is realised using [CoreValue](https://github.com/terhechte/CoreValue) with some small improvements we made ourselves. Mapping to those structs is handled by [Argo](https://github.com/thoughtbot/Argo).
+
+To simplify our work with CoreData even more we use [MagicalRecord](https://github.com/magicalpanda/MagicalRecord).
+
+Some of our older projects use `NSManagedObject` subclasses to work with database items. Subclasses are generated using [mogenerator](https://github.com/rentzsch/mogenerator). Mapping of those objects is handled by [MagicalRecord](https://github.com/magicalpanda/MagicalRecord) itself _(prefered)_ - some projects use [Groot](https://github.com/gonzalezreal/Groot), but we consider those options to be almost equal.
+
 ### AutoLayout
 
 ### Reactive Cocoa and MVVM
