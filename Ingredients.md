@@ -28,14 +28,6 @@ Some of our older projects use `NSManagedObject` subclasses to work with databas
 
 ### AutoLayout
 
-We don't do storyboards. We don't even want to waste space here by hating on storyboards. Just embrace `loadView`.
-
-We use the `loadView` method on `ViewController`'s and the "code" designated initializer (e.g. `CollectionViewCell.init(frame:)`, `TableViewCell.init(style:, reuseIdentifier:)`) on `UIView`'s. We don't implement `init(coder:)`. Just make it trap at runtime with `fatalError`.
-
-We prefer AutoLayout over static positioning. We use AutoLayout in the code. If you don't want to use constraints to layout the view, you can use `UIStackView` or for the older systems `TZStackView`.
-
-Writing layout using the Apple's library is hell. The syntax is too complicated and finding errors is impossible. So we don't use it. Our goal is [SnapKit](https://github.com/SnapKit/SnapKit)! This library  AutoLayout simple as that. (_example missing_)
-
 ### Automatization
 
 #### Sketch
