@@ -28,6 +28,18 @@ Some of our older projects use `NSManagedObject` subclasses to work with databas
 
 ### AutoLayout
 
+### Automatization
+
+#### Sketch
+
+Our director of beauty designs apps in [Sketch](https://www.sketchapp.com). [Sketch](https://www.sketchapp.com) is easy-to-use graphical app that helps us create great apps. Objects in [Sketch](https://www.sketchapp.com) are repesented as curves. Thanks to you can scale every image to the desired size and export it without loosing image quality.
+
+[Sketch](https://www.sketchapp.com) is great app but with extensions are even better. We use [PaintCode extension](https://www.paintcodeapp.com/sketch) that creates code representation from images in [Sketch](https://www.sketchapp.com). Then you can use exported images in the code in every size you want without quality loss.
+
+#### SwiftGen
+
+Images and localization use Strings as identifier. These indentifiers are not checked for correctness, so is very easy to create typing error (eg. _language -> langauge_). This problem solves [SwiftGen](https://github.com/AliSoftware/SwiftGen), that generates enums for assets and localization strings.
+
 ### Reactive Cocoa and MVVM
 
 We love streams. Streams are good for you, and for your app.
