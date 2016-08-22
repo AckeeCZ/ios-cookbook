@@ -34,7 +34,19 @@ We use the `loadView` method on `ViewController`'s and the "code" designated ini
 
 We prefer AutoLayout over static positioning. We use AutoLayout in the code. If you don't want to use constraints to layout the view, you can use `UIStackView` or for the older systems `TZStackView`.
 
-Writing layout using the Apple's library is hell. The syntax is too complicated and finding errors is impossible. So we don't use it. Our goal is [SnapKit](https://github.com/SnapKit/SnapKit)! This library  AutoLayout simple as that. (_example missing_)
+Writing layout using the Apple's library is hell. The syntax is too complicated and finding errors is impossible. So we don't use it. Our goal is [SnapKit](https://github.com/SnapKit/SnapKit)! This library makes AutoLayout simple as
+
+```swift
+let box = UIView()
+let container = UIView()
+
+container.addSubview(box)
+
+box.snp_makeConstraints { make in
+    make.size.equalTo(50)
+    make.center.equalTo(0)
+}
+```
 
 ### Reactive Cocoa and MVVM
 
