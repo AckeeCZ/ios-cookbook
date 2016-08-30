@@ -20,6 +20,26 @@ Our director of beauty designs apps in [Sketch](https://www.sketchapp.com). [Ske
 
 Images and localization use Strings as identifier. These indentifiers are not checked for correctness, so is very easy to create typing error (eg. _language -> langauge_). This problem solves [SwiftGen](https://github.com/AliSoftware/SwiftGen), that generates enums for assets and localization strings.
 
+We don't do storyboards. We don't even want to waste space here by hating on storyboards. Just embrace `loadView`.
+
+We use the `loadView` method on `ViewController`'s and the "code" designated initializer (e.g. `CollectionViewCell.init(frame:)`, `TableViewCell.init(style:, reuseIdentifier:)`) on `UIView`'s. We don't implement `init(coder:)`. Just make it trap at runtime with `fatalError`.
+
+We prefer AutoLayout over static positioning. We use AutoLayout in the code. If you don't want to use constraints to layout the view, you can use `UIStackView` or for the older systems `TZStackView`.
+
+Writing layout using the Apple's library is hell. The syntax is too complicated and finding errors is impossible. So we don't use it. Our goal is [SnapKit](https://github.com/SnapKit/SnapKit)! This library makes AutoLayout simple as
+
+```swift
+let box = UIView()
+let container = UIView()
+
+container.addSubview(box)
+
+box.snp_makeConstraints { make in
+    make.size.equalTo(50)
+    make.center.equalTo(0)
+}
+```
+
 ### Reactive Cocoa and MVVM
 
 We love streams. Streams are good for you, and for your app.
