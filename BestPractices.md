@@ -52,6 +52,10 @@ Other emojis like ➕ are also used, but we don't need a convention for every em
 
 We support [semantic versioning](http://semver.org), and it's important that minor releases are backwards compatible otherwise don't feel shy to make it a major release.
 
+### Instructions 
+
+To see all steps needed for deployment of new version to production see [Releases](Release.md) notes
+
 ## Comments
 
 Good code should be self explanatory and comments should not be needed. There are few exceptions like public API and particular piece of code which might not be easily readable for everyone (i.e. functional code).
