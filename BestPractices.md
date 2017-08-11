@@ -8,10 +8,6 @@
 
 The only recommended version of Apple tools like Xcode is the lastest available in the [App Store](https://itunes.apple.com/us/app/xcode/id497799835).
 
-### Project structure
-
-We have recommended [project architecture]() however sometimes you will need to change it or not following it for some reason. Thats fine if you can say thats really necessary. Try to keep it consistent. 
-
 ### Project architecture 
 
 We use MVVM for our projects so we encourage to use this pattern everywhere unless you find it really heavy clumsy for your case (i.e some table/collection cell)
@@ -22,22 +18,22 @@ I would love to say that we really care about warnings. But I have to be honest 
 
 ## Version Control
 
-We use git and gitlab. We follow [feature branch workflow](https://confluence.atlassian.com/bitbucket/workflow-for-git-feature-branching-814201830.html) for development with merge requests. We have `master` branch where lays production code. In `development` branch we keep *current* development version of the app. 
+We use [Git](https://git-scm.com) and [GitLab](https://about.gitlab.com). We follow [feature branch workflow](https://confluence.atlassian.com/bitbucket/workflow-for-git-feature-branching-814201830.html) for development with merge requests. We have `master` branch where lays production code. In `development` branch we keep *current* development version of the app. 
 
 ### Branching 
 For every fix or feature you have to create separate branch. When you are done you create merge request.
 
 ### Naming
-Name branches with meaningful names which describes what you are trying to do there. When more developers are on the project prefix the name with your initials e.g. `dv/fix-login-action`
+Name branches with meaningful names which describes what you are trying to do there. When more developers are on the project prefix the name with your initials e.g. `dv/fix-login-action`.
 
 ### Merge Requests 
 On every project we do merge requests. If there are 2 developers on project they do cross merge requests. If there is less or more developers you can do round robin assignment within a team. Everyone creates MR even senior developer can assign MR to junior on his project. <!--Why? [Here is the explanation]() -->
 
-- Always choose destination branch the one from which you originally branched!
+- Always choose destination branch the one from which you originally branched‼️
 - Only `development` branch could be merged into `master` 💀 
 
 ### Code review
-Codereview is done in gitlab. There are 4 levels of reviewer's anger:
+Code review is done in [GitLab](https://about.gitlab.com). There are 4 levels of reviewer's anger:
 
 | emoji | shortcut          | meaning                                                                                      | merged |   |
 |--------|-------------------|----------------------------------------------------------------------------------------------|--------|---|
@@ -54,16 +50,11 @@ Other emojis like ➕ are also used, but we don't need a convention for every em
 
 ### Semantic Versioning
 
-We support [semantic versioning][6], and it's important that minor releases are backwards compatible otherwise don't feel shy to make it a major release.
-
-### Instructions 
-
-To see all steps needed for deployment of new version to production see [Releases]() notes
+We support [semantic versioning](http://semver.org), and it's important that minor releases are backwards compatible otherwise don't feel shy to make it a major release.
 
 ## Comments
 
-Good code should be self explanatory and comments should not be needed. 
-There are few exceptions like public API and particular piece of code which might not be easily readable for everyone (i.e. functional code).
+Good code should be self explanatory and comments should not be needed. There are few exceptions like public API and particular piece of code which might not be easily readable for everyone (i.e. functional code).
 
 When they are needed, comments should be used to explain **why** a particular piece of code does something. 
 
@@ -84,21 +75,23 @@ Multiple-lines:
 
 ```swift
 /*
-   QUOTE: It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife.
+QUOTE: It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife.
 However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters.
- */
+*/
 ```
 
 ## Marks
 
 ### TODO 
 Use `// TODO:` mark when you want mention piece of code as unfinished or needed for refactoring.
+
 ### MARK
 Use `// MARK:` for good code structure within a file.
 
 ```swift
 // MARK: Lifecycle methods
-override public func viewWillAppear(animated: Bool) {
+
+override public func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
     // Here goes the code
@@ -109,13 +102,13 @@ override public func viewWillAppear(animated: Bool) {
 
 ### Streams/Signals
 
-As mentioned in [Ingredients]() we love ReactiveCocoa and we encourage to use `Signal`s everywhere! There are lot of ready-made reactive wrappers for most of Cocoa API (some of them in our repos). Or you can write your own.
+As mentioned in [Ingredients]() we love [ReactiveSwift](https://github.com/ReactiveCocoa/ReactiveSwift) and we encourage to use `Signal`s everywhere! There are lot of ready-made reactive wrappers for most of Cocoa API (some of them in our repos). Or you can write your own.
 
 ### Block
 - Asynchronous (e.g. networking operations)
 - User inputs with multiple options (e.g. `UIAlertView`'s YES and NO)
 - Data source driven inputs (e.g. a table items with action blocks that were defined in the data source)
-- Returns many values (for example looking for a field in a collection and returning the field and the indexPath)
+- Returns many values (for example looking for a field in a collection and returning the field and the `IndexPath`)
 - If there’s no tracked state or if state it’s defined in the same method
 
 ### Delegate
@@ -125,7 +118,6 @@ As mentioned in [Ingredients]() we love ReactiveCocoa and we encourage to use `S
 - User input with one action (e.g. buttons actions in views that should perform on their parents)
 - If tracked state is shared (if state is stored in a property or a constant)
 
-
 ## View controllers
 
 You should always subclass from `BaseViewController` which has shared logic for the whole project. 
@@ -133,18 +125,9 @@ You should always subclass from `BaseViewController` which has shared logic for 
 ## Views
 
 When layouting views always follow those guidelines ‼️
-- Favor using `UIStackView`over layouting views yourself whenever possible
-	- When layouting views use `AutoLayout` we prefer [SnapKit]() see [Tooling]() for more reference
+- Favor using `UIStackView`over layouting views yourself
+	- When layouting views use `AutoLayout` we prefer [SnapKit](https://github.com/SnapKit/SnapKit) (see [Tooling](Tooling.md) for more reference)
 	- When layouting _collections_ or _repeating views_ use `UICollectionView` or `UITableView`
-
-<!--
-### Naming
-
-Since we use MVVM pattern it is recommended that every controller containing data or logic needs to have its `ViewModel`.
-
-When naming subclasses of `UIViewController` or friends `UIPageViewController`, `UICollectionViewController`, `UITableViewController`, you don't have to use the `ViewController` suffix.
-
-For example instead of `HYPRecipesTableViewController` you would do `HYPRecipesViewController`, this applies for both Objective-C and Swift.-->
 
 ### Presenting and dismissing View Controllers
 
@@ -154,10 +137,10 @@ For example instead of `HYPRecipesTableViewController` you would do `HYPRecipesV
 
 ### Images
 
-When design is in Sketch use it’s StyleKit for creating resolution-independent vector images. Rest of the images should be in XCAssets and generated and used with Enums generated via [SwiftGen]().
+When design is in [Sketch](https://www.sketchapp.com) use it’s [StyleKit](https://www.paintcodeapp.com/documentation/stylekits) for creating resolution-independent vector images. Rest of the images should be in XCAssets and generated and used with `enum`s generated via [SwiftGen](https://github.com/SwiftGen/SwiftGen).
 
 ### Fonts 
-Fotns should be stored in Resource folder. To obtain `real` name of the Font in the system use this method 
+Fonts should be stored in Resource folder. To obtain `real` name of the Font in the system use this method 
 
 ```swift
 extension UIFont {	
