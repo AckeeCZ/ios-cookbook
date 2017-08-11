@@ -18,13 +18,13 @@ Our director of beauty designs apps in [Sketch](https://www.sketchapp.com). [Ske
 
 #### SwiftGen
 
-Images and localization use Strings as identifier. These indentifiers are not checked for correctness, so is very easy to create typing error (eg. _language -> langauge_). This problem solves [SwiftGen](https://github.com/AliSoftware/SwiftGen), that generates enums for assets and localization strings.
+Images and localization use `String`s as identifier. These indentifiers are not checked for correctness, so is very easy to create typing error (e.g. _language -> langauge_). This problem solves [SwiftGen](https://github.com/AliSoftware/SwiftGen), that generates enums for assets and localization strings.
 
 We don't do storyboards. We don't even want to waste space here by hating on storyboards. Just embrace `loadView`.
 
-We use the `loadView` method on `ViewController`'s and the "code" designated initializer (e.g. `CollectionViewCell.init(frame:)`, `TableViewCell.init(style:, reuseIdentifier:)`) on `UIView`'s. We don't implement `init(coder:)`. Just make it trap at runtime with `fatalError`.
+We use the `loadView` method on `ViewController`'s and the "code" designated initializer (e.g. `UICollectionViewCell.init(frame:)`, `UITableViewCell.init(style:, reuseIdentifier:)`) on `UIView`'s. We don't implement `init(coder:)`. Just make it trap at runtime with `fatalError`.
 
-We prefer AutoLayout over static positioning. We use AutoLayout in the code. If you don't want to use constraints to layout the view, you can use `UIStackView` or for the older systems `TZStackView`.
+We prefer AutoLayout over static positioning. We use AutoLayout in the code. If you don't want to use constraints to layout the view, you can use `UIStackView` or for the older systems [TZStackView](https://github.com/tomvanzummeren/TZStackView).
 
 Writing layout using the Apple's library is hell. The syntax is too complicated and finding errors is impossible. So we don't use it. Our goal is [SnapKit](https://github.com/SnapKit/SnapKit)! This library makes AutoLayout simple as
 
@@ -36,7 +36,7 @@ container.addSubview(box)
 
 box.snp_makeConstraints { make in
     make.size.equalTo(50)
-    make.center.equalTo(0)
+    make.center.equalToSuperview()
 }
 ```
 
@@ -134,6 +134,4 @@ Maybe because its written in ReactiveCocoa ;).
 - **Extend SignalProducerType with protocol extensions**
 When you have a good reactive app architecture, you write very little code.
 This gives you time to figure out how to write even less code.
-Improve your own reactive flow with convenience extensions that work on signals with specific Value and Error types.    
-## Templates & Snippets
-
+Improve your own reactive flow with convenience extensions that work on signals with specific Value and Error types.
