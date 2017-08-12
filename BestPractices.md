@@ -37,10 +37,10 @@ Code review is done in [GitLab](https://about.gitlab.com). There are 4 levels of
 
 | emoji | shortcut          | meaning                                                                                      | merged |   |
 |--------|-------------------|----------------------------------------------------------------------------------------------|--------|---|
-| ❔      | :grey_question:   | I'm probably just bored and want to talk :)                                                 | YES    |   |
-| ❕      | :grey_exclamation: | I will merge this but you should either not do this again or defend it here in the comments. | YES    |   |
-| ❗      | :exclamation:     | Won't be merged, unless it's a question and you reply that there's no problem.              | MAYBE     |   |
-| 💩      | :shit:            | Won't be merged. Also, you should walk through sewers for a month. _(Rarely Used)_           | NO     |   |
+| ❔      | `:grey_question:`   | I'm probably just bored and want to talk :)                                                 | YES    |   |
+| ❕      | `:grey_exclamation:` | I will merge this but you should either not do this again or defend it here in the comments. | YES    |   |
+| ❗      | `:exclamation:`     | Won't be merged, unless it's a question and you reply that there's no problem.              | MAYBE     |   |
+| 💩      | `:shit:`            | Won't be merged. Also, you should walk through sewers for a month. _(Rarely Used)_           | NO     |   |
 
 
 Other emojis like ➕ are also used, but we don't need a convention for every emoji out there. ❤ 
@@ -106,7 +106,7 @@ override public func viewWillAppear(_ animated: Bool) {
 
 ### Streams/Signals
 
-As mentioned in [Ingredients]() we love [ReactiveSwift](https://github.com/ReactiveCocoa/ReactiveSwift) and we encourage to use `Signal`s everywhere! There are lot of ready-made reactive wrappers for most of Cocoa API (some of them in our repos). Or you can write your own.
+As mentioned in [Ingredients](Ingredients.md) we love [ReactiveSwift](https://github.com/ReactiveCocoa/ReactiveSwift) and we encourage to use `Signal`s everywhere! There are lot of ready-made reactive wrappers for most of Cocoa API (some of them in our repos). Or you can write your own.
 
 ### Block
 - Asynchronous (e.g. networking operations)
@@ -144,7 +144,7 @@ When layouting views always follow those guidelines ‼️
 When design is in [Sketch](https://www.sketchapp.com) use it’s [StyleKit](https://www.paintcodeapp.com/documentation/stylekits) for creating resolution-independent vector images. Rest of the images should be in XCAssets and generated and used with `enum`s generated via [SwiftGen](https://github.com/SwiftGen/SwiftGen).
 
 ### Fonts 
-Fonts should be stored in Resource folder. To obtain `real` name of the Font in the system use this method 
+Fonts should be stored in Resource folder. To obtain real name of the Font in the system use this method 
 
 ```swift
 extension UIFont {	
