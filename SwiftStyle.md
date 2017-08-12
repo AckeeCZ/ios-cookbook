@@ -783,21 +783,21 @@ Code (even non-production, tutorial demo code) should not create reference cycle
 
 ### Extending object lifetime
 
-Extend object lifetime using the `[weak self]` and `guard let strongSelf = self else { return }` idiom. `[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure. Explicitly extending lifetime is preferred to optional unwrapping.
+Extend object lifetime using the `[weak self]` and ``guard let `self` = self else { return }`` idiom. `[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure. Explicitly extending lifetime is preferred to optional unwrapping.
 
 **Preferred**
 ```swift
-resource.request().onComplete { [weak self]() response in
-  guard let strongSelf = self else { return }
-  let model = strongSelf.updateModel(response)
-  strongSelf.updateUI(model)
+resource.request().onComplete { [weak self] response in
+  guard let `self` = self else { return }
+  let model = self.updateModel(response)
+  self.updateUI(model)
 }
 ```
 
 **Not Preferred**
 ```swift
 `// might crash if self is released before response returns
-resource.request().onComplete { [unowned self]() response in
+resource.request().onComplete { [unowned self] response in
   let model = self.updateModel(response)
   self.updateUI(model)
 }
@@ -806,7 +806,7 @@ resource.request().onComplete { [unowned self]() response in
 **Not Preferred**
 ```swift
 `// deallocate could happen between updating the model and updating UI
-resource.request().onComplete { [weak self]() response in
+resource.request().onComplete { [weak self] response in
   let model = self?.updateModel(response)
   self?.updateUI(model)
 }
