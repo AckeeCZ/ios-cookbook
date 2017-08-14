@@ -8,6 +8,6 @@ We release often so we prepared several steps you have to follow
 4. Create tag for version in `master`branch ✔️ 
 5. Run `fastlane appstore` 🤓
 6. Go celebrate! 🎉
-5. Seriously thats all we ♥️our CI
+5. Seriously thats all, we ♥ ️our CI.
 
-In case you want to be extra careful or you are just suspicious you can check hockey app and iTunes connect if builds were uploaded successfully 
+In case you want to be extra careful or you are just suspicious you can check HockeyApp and iTunes connect if builds were uploaded successfully.
