@@ -41,13 +41,13 @@ Set of Libraries we use during development
 
 ### Mapping
 
-For mapping JSON objects we use [Argo](https://github.com/thoughtbot/Argo) with reactive extensions we created. It really simplifies asynchronous mapping.
+For mapping JSON objects we use [Marshal](https://github.com/utahiosmac/Marshal) with reactive extensions we created. It really simplifies asynchronous mapping.
 
-To make our work even simpler we use Argo in combination with [Curry](https://github.com/thoughtbot/Curry). Examples of usage can be found at [Argo github](https://github.com/thoughtbot/Argo).
+### Realm
+
+Our current projects are using [Realm](https://realm.io) in combination with our custom reactive extensions. That helps us create more readable code by using generics.
 
 ### CoreData
-
-Our projects use Swift structs and manipulation with them is realised using [CoreValue](https://github.com/terhechte/CoreValue) with some small improvements we made ourselves. Mapping to those structs is handled by [Argo](https://github.com/thoughtbot/Argo).
 
 To simplify our work with CoreData even more we use [MagicalRecord](https://github.com/magicalpanda/MagicalRecord).
 

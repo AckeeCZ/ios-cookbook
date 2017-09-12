@@ -129,7 +129,7 @@ You should always subclass from `BaseViewController` which has shared logic for 
 ## Views
 
 When layouting views always follow those guidelines ‼️
-- Favor using `UIStackView`over layouting views yourself
+- Favor using `UIStackView` over layouting views yourself
 	- When layouting views use `AutoLayout` we prefer [SnapKit](https://github.com/SnapKit/SnapKit) (see [Tooling](Tooling.md) for more reference)
 	- When layouting _collections_ or _repeating views_ use `UICollectionView` or `UITableView`
 
