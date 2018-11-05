@@ -127,7 +127,7 @@ but what the compiler is really saying is:
 
     Steps 2-5 are optional, but don't expect the compiler's help unless you can get it right on the first try.
 
-- **Don't be shy and [play with the balls](http://neilpa.me/rac-marbles/).**
+- **Don't be shy and [play with the balls](http://rxmarbles.com).**
 
 - **Write tons of extensions**.
 A reactive app is a clever structure made up of small building blocks at the core
