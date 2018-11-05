@@ -144,6 +144,10 @@ When you have a good reactive app architecture, you write very little code.
 This gives you time to figure out how to write even less code.
 Improve your own reactive flow with convenience extensions that work on signals with specific Value and Error types.
 
+## Dependency injection
+
+To keep our projects testable we do dependency injection. We don't use any particular framework for that as we consider them tricky and non-transparent. Instead we use [protocol composition](http://merowing.info/2017/04/using-protocol-compositon-for-dependency-injection/). It very simple, understandable and still powerful.
+
 ## Project template
 
 Because we do a lot of apps and use lot of Xcode features and our own custom stuff, we don't create new apps from the default Xcode template, we have our [template](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate). There you can see almost all the mentioned stuff in action 😎.
