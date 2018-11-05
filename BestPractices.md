@@ -1,12 +1,10 @@
 # Best practices
 
-## Table of Contents
-
 ## Xcode
 
 ### Version
 
-The only recommended version of Apple tools like Xcode is the lastest available in the [App Store](https://itunes.apple.com/us/app/xcode/id497799835).
+The only recommended version of Apple tools like Xcode is the latest available in the [App Store](https://itunes.apple.com/us/app/xcode/id497799835).
 
 ### Project architecture 
 
@@ -66,7 +64,7 @@ Don't use comments in place of `assertionFailure`s.
 
 It is definitely not allowed to use comments for hiding “unwanted” code in source control. 
 
-Block comments should generally be avoided, as code should be as self-documenting as possible, with only the need for intermittent, few-line explanations. This does not apply to those comments used to generate documentation.
+Block comments should generally be avoided, as code should be as self-documenting as possible, with only the need for intermittent, few-line explanations. This does not apply to those comments used to generate documentation. Also when commenting methods or classes/structs/etc. don't be lazy to add one more slash so the appledoc can be generated.
 
 **Comments style**
 
@@ -90,10 +88,10 @@ However little known the feelings or views of such a man may be on his first ent
 Use `// TODO:` mark when you want mention piece of code as unfinished or needed for refactoring.
 
 ### MARK
-Use `// MARK:` for good code structure within a file.
+Use `// MARK:` for good code structure within a file. Also don't hesitate to use hyphen in section name so Xcode can generate section sepators in method overview.
 
 ```swift
-// MARK: Lifecycle methods
+// MARK: - Lifecycle methods
 
 override public func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -113,7 +111,7 @@ As mentioned in [Ingredients](Ingredients.md) we love [ReactiveSwift](https://gi
 - User inputs with multiple options (e.g. `UIAlertView`'s YES and NO)
 - Data source driven inputs (e.g. a table items with action blocks that were defined in the data source)
 - Returns many values (for example looking for a field in a collection and returning the field and the `IndexPath`)
-- If there’s no tracked state or if state it’s defined in the same method
+- If there’s no tracked state or if state is defined in the same method
 
 ### Delegate
 - Synchronous (e.g. buttons actions in views that should perform on their parents)
@@ -135,16 +133,40 @@ When layouting views always follow those guidelines ‼️
 
 ### Presenting and dismissing View Controllers
 
-- It's better practice to call `dismissViewControllerAnimated:completion:` in the `UIViewController` that did the presenting, not in the `UIViewController` that was presented.
+- When presenting and dismissing a view controller, no view controller should explicitly present or dismiss, such things should be handled by `FlowCoordinator`.
 
-## Assets
+## Theme
+
+To apply app theme for shared elements we use `theme` namespace on UI elements. So when applying a style to an element, setting font to a label, you should use it. It is not that hard 😎
+
+```swift
+label.textColor = UIColor.theme.gray
+
+let button = UIButton.theme.createText()
+```
+
+Also adding new styles is as easy as an extension:
+
+```swift
+extension Theme where Base: UILabel {
+    func makeTitle() -> Theme<Base> {
+        base.textColor = UIColor.theme.gray
+        base.font = UIFont.theme.regular(14)
+        return self
+    }
+}
+```
 
 ### Images
 
-When design is in [Sketch](https://www.sketchapp.com) use it’s [StyleKit](https://www.paintcodeapp.com/documentation/stylekits) for creating resolution-independent vector images. Rest of the images should be in XCAssets and generated and used with `enum`s generated via [SwiftGen](https://github.com/SwiftGen/SwiftGen).
+Of course we store all images in the asset catalog. We prefer to use vector images so we don't actually have to deal with having multiple images for different scales of devices. So all our images are in PDF format. It is important to make sure that the _preserve vector data checkbox_ is always checked. Then as the images are in vectors we should use just a single scale image. Also we don't like the default rendering mode so we prefer to have this property set so it is clear how the image would render.
+
+![Asset catalog settings][asset_catalog]
+
+Not for every case are vectors a good choice. Sometimes we experienced issues when having a complicated vector image as background of a screen caused some problems (like slow push/pop animation). In this cases are raster images good choice 🙂
 
 ### Fonts 
-Fonts should be stored in Resource folder. To obtain real name of the Font in the system use this method 
+Fonts should be stored in Resource folder. To obtain real name of the Font in the system you can use this method.
 
 ```swift
 extension UIFont {	
@@ -156,6 +178,14 @@ extension UIFont {
             }
         }
     }
-
 }
 ```
+
+When accessing fonts you should use the `theme` namespace.
+
+### Colors
+
+We store colors in code by keeping there hex codes. They are all in the `theme` namespace so when using them you can find them quickly.
+
+
+[asset_catalog]:    assets/asset_catalog.png "Asset catalog settings"
