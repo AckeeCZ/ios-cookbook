@@ -14,17 +14,17 @@ Result? Consistent code across various projects, quality codebase and happiness 
 
 Our director of beauty designs apps in [Sketch](https://www.sketchapp.com). [Sketch](https://www.sketchapp.com) is easy-to-use graphical app that helps us create great apps. Objects in [Sketch](https://www.sketchapp.com) are repesented as curves. Thanks to you can scale every image to the desired size and export it without loosing image quality.
 
-[Sketch](https://www.sketchapp.com) is great app but with extensions are even better. We use [PaintCode extension](https://www.paintcodeapp.com/sketch) that creates code representation from images in [Sketch](https://www.sketchapp.com). Then you can use exported images in the code in every size you want without quality loss.
-
 #### SwiftGen
 
 Images and localization use `String`s as identifier. These indentifiers are not checked for correctness, so is very easy to create typing error (e.g. _language -> langauge_). This problem solves [SwiftGen](https://github.com/AliSoftware/SwiftGen), that generates enums for assets and localization strings.
+
+## Layouting
 
 We don't do storyboards. We don't even want to waste space here by hating on storyboards. Just embrace `loadView`.
 
 We use the `loadView` method on `ViewController`'s and the "code" designated initializer (e.g. `UICollectionViewCell.init(frame:)`, `UITableViewCell.init(style:, reuseIdentifier:)`) on `UIView`'s. We don't implement `init(coder:)`. Just make it trap at runtime with `fatalError`.
 
-We prefer AutoLayout over static positioning. We use AutoLayout in the code. If you don't want to use constraints to layout the view, you can use `UIStackView` or for the older systems [TZStackView](https://github.com/tomvanzummeren/TZStackView).
+We prefer AutoLayout over static positioning. We use AutoLayout in the code. If you don't want to use constraints to layout the view, you can use `UIStackView`.
 
 Writing layout using the Apple's library is hell. The syntax is too complicated and finding errors is impossible. So we don't use it. Our goal is [SnapKit](https://github.com/SnapKit/SnapKit)! This library makes AutoLayout simple as
 
@@ -34,13 +34,21 @@ let container = UIView()
 
 container.addSubview(box)
 
-box.snp_makeConstraints { make in
+box.snp.makeConstraints { make in
     make.size.equalTo(50)
     make.center.equalToSuperview()
 }
 ```
 
-### Reactive Cocoa and MVVM
+## Screen flow
+
+Well again, we don't do storyboards, not even nibs. The only layout we do by control-dragging in storyboard/nib is just launch screen - well, when it's possible to do this in code, be sure we will 😎. So how do we handle all the necessary flow and screen changes? 
+
+The answer is very simple! It's the _FlowCoordinator_ buzzword 😃 Generally we believe that view controller itself shouldn't depend on other view controllers (unless it explicitly embeds another view controller) and also it shouldn't rely on the way it is displayed on the screen. View controllers should be able to be displayed as roots of a `UIWindow`, they should able to be displayed inside `UINavigationController` and also they should be able to be presented modally.
+
+So all our view controllers have a `FlowDelegate` protocol and also a `flowDelegate` property. Then all flows which should trigger a screen change are delegated to the `flowDelegate` so you shouldn't forget to set it 😎.
+
+## Reactive Cocoa and MVVM
 
 We love streams. Streams are good for you, and for your app.
 [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) has served us well since 2014 and we believe
@@ -86,7 +94,7 @@ If you've `start`ed/`observe`d a signal, use `takeUntil(_:)` to explicitly stop 
 If you like the time and lines of code saved by the convenience of reactive code,
 you will love what it does to debugging.
 You come to a codebase you've never seen, and a label is not showing the proper text.
-You open up the ViewController to get familiar with the code and see this line `label.rac_text <~ foo`.
+You open up the ViewController to get familiar with the code and see this line `label.reactive.text <~ foo`.
 Well, its probably this `foo`king fella not sending the correct values.
 
 - **Use sideffects sparingly.** You have this signal and its bound to the View just nicely,
@@ -119,7 +127,7 @@ but what the compiler is really saying is:
 
     Steps 2-5 are optional, but don't expect the compiler's help unless you can get it right on the first try.
 
-- **Don't be shy and [play with the balls](http://neilpa.me/rac-marbles/).**
+- **Don't be shy and [play with the balls](http://rxmarbles.com).**
 
 - **Write tons of extensions**.
 A reactive app is a clever structure made up of small building blocks at the core
@@ -131,7 +139,15 @@ If you can't find an excuse why an API shouldn't be wrapped reactively, **do it*
 So you've read them all, the ReactiveCocoa best practices and tutorials are great.
 But when you really need to know what an operator does, the source is actually pretty simple and understandable.
 Maybe because its written in ReactiveCocoa ;).
-- **Extend SignalProducerType with protocol extensions**
+- **Extend SignalProducerProtocol with protocol extensions**
 When you have a good reactive app architecture, you write very little code.
 This gives you time to figure out how to write even less code.
 Improve your own reactive flow with convenience extensions that work on signals with specific Value and Error types.
+
+## Dependency injection
+
+To keep our projects testable we do dependency injection. We don't use any particular framework for that as we consider them tricky and non-transparent. Instead we use [protocol composition](http://merowing.info/2017/04/using-protocol-compositon-for-dependency-injection/). It very simple, understandable and still powerful.
+
+## Project template
+
+Because we do a lot of apps and use lot of Xcode features and our own custom stuff, we don't create new apps from the default Xcode template, we have our [template](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate). There you can see almost all the mentioned stuff in action 😎.
