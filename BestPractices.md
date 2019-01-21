@@ -36,6 +36,7 @@ Code review is done in [GitLab](https://about.gitlab.com). There are 4 levels of
 | emoji | shortcut          | meaning                                                                                      | merged |   |
 |--------|-------------------|----------------------------------------------------------------------------------------------|--------|---|
 | ❔      | `:grey_question:`   | I'm probably just bored and want to talk :)                                                 | YES    |   |
+| ❓ | `:question:` | I want some feedback, need to get some more details | MAYBE |
 | ❕      | `:grey_exclamation:` | I will merge this but you should either not do this again or defend it here in the comments. | YES    |   |
 | ❗      | `:exclamation:`     | Won't be merged, unless it's a question and you reply that there's no problem.              | MAYBE     |   |
 | 💩      | `:shit:`            | Won't be merged. Also, you should walk through sewers for a month. _(Rarely Used)_           | NO     |   |
