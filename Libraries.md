@@ -71,6 +71,10 @@ Set of Libraries we use during development
 - [SnapKit](https://github.com/SnapKit/SnapKit) - for autolayout in code
 - [TagListView](https://github.com/ElaWorkshop/TagListView) - for displaying various tag views
 
+### Maps
+
+- [Karte](https://github.com/kiliankoe/Karte) - opening directions in popular navigation apps
+
 ### Various extensions
 
 - [ACKategories](https://github.com/AckeeCZ/ACKategories) - our set of useful extensions and subclasses
